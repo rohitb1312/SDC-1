@@ -1,0 +1,673 @@
+============================================================
+                SOFTWARE ENGINEERING LAB
+              COMPLETE GIT COMMAND CHEAT SHEET
+============================================================
+
+
+========================
+1. GIT SETUP
+========================
+
+git --version
+Check installed Git version.
+
+git config --global user.name "Your Name"
+Set your Git username globally.
+
+git config --global user.email "your@email.com"
+Set your Git email globally.
+
+git config --global --list
+Display global Git configuration.
+
+git config user.name "Your Name"
+Set username only for the current repository.
+
+git config user.email "your@email.com"
+Set email only for the current repository.
+
+
+========================
+2. CREATE / CLONE REPOSITORY
+========================
+
+git init
+Initialize a new Git repository in the current folder.
+
+git clone <repository-url>
+Clone an existing remote repository.
+
+git clone <repository-url> <folder-name>
+Clone a repository into a specified folder.
+
+cd <folder-name>
+Enter the cloned/project directory.
+
+
+========================
+3. REMOTE REPOSITORIES
+========================
+
+git remote -v
+Display configured remote repository URLs.
+
+git remote add origin <repository-url>
+Add a remote repository named origin.
+
+git remote set-url origin <repository-url>
+Change the URL of the origin remote.
+
+git remote remove origin
+Remove the origin remote.
+
+git remote show origin
+Display detailed information about origin.
+
+git push -u origin main
+Push main to origin and set upstream tracking.
+
+git push origin main
+Push the local main branch to origin.
+
+git push
+Push the current branch to its configured remote.
+
+
+========================
+4. STATUS / CHANGES
+========================
+
+git status
+Show staged, unstaged and untracked files.
+
+git diff
+Show unstaged changes.
+
+git diff --cached
+Show staged changes.
+
+git diff --staged
+Show staged changes.
+
+git diff main...feature
+Compare changes between main and feature branches.
+
+git diff main...feature -- <file>
+Compare a specific file between two branches.
+
+
+========================
+5. ADD / COMMIT
+========================
+
+git add <file>
+Stage a specific file.
+
+git add .
+Stage all changes in the current directory.
+
+git add -A
+Stage all changes including additions and deletions.
+
+git commit -m "message"
+Create a commit with the specified message.
+
+git commit --amend
+Modify the most recent commit.
+
+git commit --amend --no-edit
+Add changes to the latest commit without changing its message.
+
+git commit --amend -m "New message"
+Change the latest commit message.
+
+
+========================
+6. BRANCHES
+========================
+
+git branch
+List local branches.
+
+git branch -a
+List local and remote branches.
+
+git branch -r
+List remote branches.
+
+git branch --show-current
+Show the currently active branch.
+
+git branch <branch-name>
+Create a new branch.
+
+git switch <branch-name>
+Switch to an existing branch.
+
+git switch -c <branch-name>
+Create and switch to a new branch.
+
+git checkout <branch-name>
+Switch to an existing branch.
+
+git checkout -b <branch-name>
+Create and switch to a new branch.
+
+git branch -d <branch-name>
+Delete a merged local branch.
+
+git branch -D <branch-name>
+Force-delete a local branch.
+
+
+========================
+7. COMMON FEATURE BRANCHES
+========================
+
+git switch -c feature/player-registration
+Create and switch to player-registration feature branch.
+
+git switch -c feature/course-recommendation
+Create and switch to course-recommendation feature branch.
+
+git switch -c feature/registration
+Create and switch to registration feature branch.
+
+git switch -c feature/event-registration
+Create and switch to event-registration feature branch.
+
+
+========================
+8. FETCH / PULL
+========================
+
+git fetch
+Download remote changes without integrating them.
+
+git fetch origin
+Download updates from the origin remote.
+
+git pull
+Fetch and integrate changes from the tracked remote branch.
+
+git pull origin main
+Fetch and integrate the remote main branch.
+
+git pull --rebase origin main
+Fetch and rebase the current branch onto remote main.
+
+
+========================
+9. MERGE
+========================
+
+git merge <branch>
+Merge another branch into the current branch.
+
+git merge origin/main
+Merge the latest remote main into the current branch.
+
+git switch main
+Switch to the main branch.
+
+git merge feature/player-registration
+Merge the feature branch into main.
+
+git merge --abort
+Cancel an in-progress merge.
+
+
+========================
+10. MERGE CONFLICT
+========================
+
+git status
+Show files involved in a merge conflict.
+
+git add <resolved-file>
+Mark a manually resolved conflict as resolved.
+
+git commit
+Complete the merge after resolving conflicts.
+
+git merge --continue
+Continue a merge after resolving conflicts when supported.
+
+git merge --abort
+Cancel the merge and return to the previous state.
+
+
+========================
+11. REBASE
+========================
+
+git fetch origin
+Download the latest remote changes before rebasing.
+
+git rebase origin/main
+Replay current branch commits on top of latest main.
+
+git rebase main
+Replay current branch commits on top of local main.
+
+git rebase --continue
+Continue a rebase after resolving a conflict.
+
+git rebase --abort
+Cancel the rebase and restore the previous state.
+
+git push --force-with-lease
+Safely update a remote branch after rewriting its history.
+
+
+========================
+12. UNDO / RESTORE
+========================
+
+git restore <file>
+Discard uncommitted changes to a file.
+
+git restore .
+Discard all uncommitted working-directory changes.
+
+git restore --staged <file>
+Unstage a file while keeping its changes.
+
+git restore --staged .
+Unstage all staged files.
+
+git reset --soft HEAD~1
+Remove the latest commit while keeping changes staged.
+
+git reset HEAD~1
+Remove the latest commit while keeping changes unstaged.
+
+git reset --hard HEAD~1
+Remove the latest commit and discard its changes.
+
+git revert <commit-id>
+Create a new commit that reverses an existing commit.
+
+
+========================
+13. DELETE / UNTRACK FILE
+========================
+
+git rm <file>
+Delete a file and stage the deletion.
+
+git rm --cached <file>
+Stop tracking a file while keeping it locally.
+
+git rm -r --cached .
+Remove all files from tracking while keeping them locally.
+
+
+========================
+14. .gitignore
+========================
+
+echo "db-config.env" >> .gitignore
+Add db-config.env to .gitignore.
+
+git add .gitignore
+Stage the .gitignore file.
+
+git commit -m "Update gitignore"
+Commit .gitignore changes.
+
+
+========================
+15. STASH
+========================
+
+git stash
+Temporarily save uncommitted changes.
+
+git stash push -m "message"
+Save changes with a descriptive stash message.
+
+git stash list
+List all saved stashes.
+
+git stash pop
+Restore the latest stash and remove it from the stash list.
+
+git stash apply
+Restore the latest stash but keep it in the stash list.
+
+git stash apply stash@{0}
+Apply a specific stash.
+
+git stash drop
+Delete the latest stash.
+
+git stash clear
+Delete all stashes.
+
+
+========================
+16. PATCH FILES
+========================
+
+git diff > changes.patch
+Create a patch containing unstaged changes.
+
+git diff --cached > changes.patch
+Create a patch containing staged changes.
+
+git diff -- <file> > changes.patch
+Create a patch for a specific file.
+
+git apply --check changes.patch
+Check whether a patch can be applied without applying it.
+
+git apply changes.patch
+Apply a patch.
+
+git apply --reject --whitespace=fix changes.patch
+Apply a patch while handling whitespace and rejected hunks.
+
+git apply --3way changes.patch
+Try a three-way merge when applying a patch.
+
+
+========================
+17. FORMAT-PATCH
+========================
+
+git format-patch -1 HEAD
+Create a patch file from the latest commit.
+
+git format-patch main..feature
+Create patch files for commits on feature not in main.
+
+
+========================
+18. LOG / HISTORY
+========================
+
+git log
+Display commit history.
+
+git log --oneline
+Display compact commit history.
+
+git log --oneline -5
+Display the latest five commits.
+
+git log --oneline --graph --decorate --all
+Display a compact visual branch/merge history.
+
+git log main..feature
+Show commits present in feature but not main.
+
+git log feature..main
+Show commits present in main but not feature.
+
+git show <commit-id>
+Display details of a specific commit.
+
+
+========================
+19. TAGS
+========================
+
+git tag
+List all tags.
+
+git tag v1.0
+Create tag v1.0.
+
+git tag -a v1.0 -m "Version 1.0"
+Create an annotated tag.
+
+git push origin v1.0
+Push a specific tag to GitHub.
+
+git push origin --tags
+Push all local tags to GitHub.
+
+
+========================
+20. REMOTE BRANCH TRACKING
+========================
+
+git branch -vv
+Show local branches and their upstream tracking branches.
+
+git push -u origin feature/player-registration
+Push a feature branch and establish upstream tracking.
+
+git branch --set-upstream-to=origin/main main
+Set origin/main as the upstream for local main.
+
+
+========================
+21. FORK / UPSTREAM
+========================
+
+git clone <your-fork-url>
+Clone your forked repository.
+
+git remote add upstream <original-repository-url>
+Add the original repository as upstream.
+
+git remote -v
+Verify origin and upstream remotes.
+
+git fetch upstream
+Download updates from the original repository.
+
+git switch main
+Switch to your main branch.
+
+git merge upstream/main
+Merge the original repository's main into your main.
+
+git push origin main
+Push the updated main to your fork.
+
+git switch -c feature/my-feature
+Create a feature branch.
+
+git push -u origin feature/my-feature
+Push the feature branch to your fork for a pull request.
+
+
+========================
+22. SSH AUTHENTICATION
+========================
+
+ssh-keygen -t ed25519 -C "your@email.com"
+Generate an SSH key pair.
+
+eval "$(ssh-agent -s)"
+Start the SSH agent in Git Bash.
+
+ssh-add ~/.ssh/id_ed25519
+Add the private SSH key to the SSH agent.
+
+cat ~/.ssh/id_ed25519.pub
+Display the public SSH key to add to GitHub.
+
+ssh -T git@github.com
+Test GitHub SSH authentication.
+
+git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+Change the repository remote from HTTPS to SSH.
+
+
+========================
+23. GITHUB PUSH
+========================
+
+git add .
+Stage all project changes.
+
+git commit -m "Update project"
+Commit the staged changes.
+
+git push origin main
+Push main to GitHub.
+
+git push -u origin feature/branch-name
+Push a new feature branch and track it remotely.
+
+
+============================================================
+                 MOST IMPORTANT EXAM COMMANDS
+============================================================
+
+git init
+Initialize Git in a project.
+
+git clone <url>
+Clone a repository.
+
+git status
+Check repository status.
+
+git add .
+Stage all changes.
+
+git commit -m "message"
+Commit changes.
+
+git remote -v
+Check remote URLs.
+
+git push -u origin main
+Push main and set upstream.
+
+git fetch origin
+Download remote updates without merging.
+
+git pull origin main
+Fetch and integrate remote main.
+
+git switch -c feature/name
+Create and switch to a feature branch.
+
+git merge feature/name
+Merge a feature branch.
+
+git merge --abort
+Cancel a merge.
+
+git rebase origin/main
+Rebase feature branch onto latest main.
+
+git rebase --abort
+Cancel a rebase.
+
+git rebase --continue
+Continue a rebase after conflict resolution.
+
+git restore file
+Discard uncommitted changes.
+
+git restore --staged file
+Unstage a file.
+
+git rm --cached file
+Stop tracking a file but keep it locally.
+
+git commit --amend --no-edit
+Add changes to the previous commit without changing its message.
+
+git reset --soft HEAD~1
+Undo the last commit while keeping changes staged.
+
+git revert <commit-id>
+Safely undo an existing commit.
+
+git stash
+Temporarily save unfinished changes.
+
+git stash list
+List saved stashes.
+
+git stash pop
+Restore the latest stash.
+
+git diff
+Show unstaged changes.
+
+git diff --cached
+Show staged changes.
+
+git diff main...feature
+Compare two branches.
+
+git diff -- file > changes.patch
+Create a patch for a file.
+
+git apply --check changes.patch
+Check a patch before applying.
+
+git apply changes.patch
+Apply a patch.
+
+git log --oneline --graph --decorate --all
+Show visual commit history.
+
+git branch -a
+Show all local and remote branches.
+
+git push --force-with-lease
+Safely push rewritten history after rebase.
+
+
+============================================================
+                     QUICK MEMORY TRICKS
+============================================================
+
+FETCH  = Download only.
+
+PULL   = Fetch + integrate.
+
+MERGE  = Combine histories.
+
+REBASE = Replay commits on a new base.
+
+RESTORE = Undo working-file changes.
+
+RESET  = Move HEAD/branch pointer.
+
+REVERT = Create a new commit that undoes another commit.
+
+STASH  = Temporarily hide unfinished work.
+
+DIFF   = Compare changes.
+
+ADD    = Stage changes.
+
+COMMIT = Save changes to local Git history.
+
+PUSH   = Upload commits.
+
+CLONE  = Download repository + initialize Git.
+
+INIT   = Turn an existing folder into a Git repository.
+
+--cached = Work with the staging/tracking state.
+
+--soft HEAD~1 = Undo commit, keep changes staged.
+
+--hard HEAD~1 = Undo commit + delete changes.
+
+--no-edit = Keep the existing commit message.
+
+-u = Set upstream tracking.
+
+-a = All branches.
+
+-m = Message.
+
+-c = Create/switch branch with switch.
+
+-X = NOT a Git option; Maven's -X is debug mode.
+
+
+============================================================

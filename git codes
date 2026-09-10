@@ -1,0 +1,63 @@
+git clone https://github.com/sarasrija/ApartmentManagementSystem.git
+cd ApartmentManagementSystem
+
+git remote -v
+
+git status
+
+Q4. Create and switch to feature/tenant-registration in one operation
+git switch -c feature/tenant-registration
+
+Q5 
+git branch -a
+
+Q6. Add TenantServlet.java and commit it
+git add src/main/java/com/apartment/servlet/TenantServlet.java
+git commit -m "Add tenant registration servlet"
+
+Q7. Add web.xml to the previous commit without changing its message
+git add src/main/webapp/WEB-INF/web.xml
+git commit --amend --no-edit
+
+Q8 
+git fetch origin
+
+Q9. Incorporate latest main changes into current branch
+git fetch origin
+
+Q10. Rebase feature branch onto updated main
+git rebase origin/main
+
+Q11. Cancel an ongoing rebase
+git rebase --abort
+
+Q12. Safely undo a faulty commit while preserving history
+git revert <commit-id>
+
+Q13. Undo the last commit but keep changes staged
+git reset --soft HEAD~1
+
+Q14. Remove accidentally committed file from Git but keep it locally
+git rm --cached src/main/resources/db-config.env
+git commit -m "Remove db-config.env from version control"
+
+Q15. Temporarily store unfinished changes
+git stash
+
+Q16. View stashes and restore the saved changes
+git stash list
+17. Compare feature/tenant-registration and main for index.jsp
+git diff main feature/tenant-registration -- src/main/webapp/index.jsp
+
+Q18. Show a compact visual branch history
+git log --oneline --graph --all
+Q19. Merge completed feature branch into main
+git checkout main
+git merge feature/tenant-registration
+
+20. Push updated main and verify local/remote are at same commit
+git push origin main
+git fetch origin
+git status
+git rev-parse HEAD
+git rev-parse origin/main
